@@ -1,14 +1,44 @@
 <%- include('../partials/header') %>
+
+<!-- Recipe Show Page -->
 <div class="container mt-3">
+  <!-- Recipe Title -->
   <h2><%= recipe.dishName %></h2>
-  <p><strong>Ingredients:</strong> <%= recipe.ingredients.join(', ') %></p>
-  <p><strong>Cooking Time:</strong> <%= recipe.cookingTime %> mins</p>
-  <p><strong>Difficulty:</strong> <%= recipe.difficulty %></p>
-  <p><strong>Instructions:</strong> <%= recipe.instructions %></p>
-  <a href="/recipes/<%= recipe._id %>/edit" class="btn btn-warning">Edit</a>
-  <form action="/recipes/<%= recipe._id %>?_method=DELETE" method="POST" style="display:inline;">
-    <button class="btn btn-danger">Delete</button>
-  </form>
-  <a href="/recipes" class="btn btn-secondary">Back</a>
+  
+  <!-- Recipe Details (Ingredients, Time, Difficulty) -->
+  <div class="row mb-4">
+    <div class="col-md-6">
+      <h4>Ingredients:</h4>
+      <ul class="list-group mb-4">
+        <% recipe.ingredients.forEach(function(ingredient) { %>
+          <li class="list-group-item"><%= ingredient %></li>
+        <% }); %>
+      </ul>
+    </div>
+    <div class="col-md-6">
+      <h4>Cooking Time:</h4>
+      <p><%= recipe.cookingTime %> minutes</p>
+      <h4>Difficulty:</h4>
+      <p><%= recipe.difficulty %></p>
+    </div>
+  </div>
+
+  <!-- Recipe Instructions -->
+  <h4>Instructions:</h4>
+  <p><%= recipe.instructions %></p>
+
+  <!-- Back Button -->
+  <a href="/recipes" class="btn btn-secondary mt-4">Back to Recipes</a>
+
+  <!-- Edit and Delete Buttons (Placed at Bottom) -->
+  <% if (currentUser) { %>
+    <div class="mt-4">
+      <a href="/recipes/<%= recipe._id %>/edit" class="btn btn-warning">Edit Recipe</a>
+      <form action="/recipes/<%= recipe._id %>?_method=DELETE" method="POST" style="display:inline;">
+        <button class="btn btn-danger ms-2">Delete Recipe</button>
+      </form>
+    </div>
+  <% } %>
 </div>
+
 <%- include('../partials/footer') %>

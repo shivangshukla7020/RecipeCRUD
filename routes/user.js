@@ -4,6 +4,9 @@ const User = require('../models/user');
 const router = express.Router();
 
 // Register
+router.get('/', (req, res) => res.render('home.ejs'));
+
+// Register
 router.get('/register', (req, res) => res.render('register'));
 
 router.post('/register', async (req, res) => {

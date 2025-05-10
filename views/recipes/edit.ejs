@@ -1,33 +1,34 @@
 <%- include('../partials/header') %>
+
 <div class="container mt-3">
-  <h2>Create New Recipe</h2>
-  <form action="/recipes" method="POST" class="needs-validation" novalidate>
+  <h2>Edit Recipe: <%= recipe.dishName %></h2>
+  <form action="/recipes/<%= recipe._id %>?_method=PUT" method="POST" class="needs-validation" novalidate>
     <div class="form-group">
-      <label>Dish Name</label>
-      <input type="text" name="dishName" class="form-control" required>
+     <label for="dishName">Dish Name</label>
+     <input type="text" name="dishName" class="form-control" value="<%= recipe.dishName %>" readonly required>
     </div>
     <div class="form-group">
-      <label>Ingredients</label>
-      <input type="text" name="ingredients" class="form-control" required>
+      <label for="ingredients">Ingredients</label>
+      <input type="text" name="ingredients" class="form-control" value="<%= recipe.ingredients.join(', ') %>" required>
     </div>
     <div class="form-group">
-      <label>Cooking Time</label>
-      <input type="number" name="cookingTime" class="form-control" required>
+      <label for="cookingTime">Cooking Time</label>
+      <input type="number" name="cookingTime" class="form-control" value="<%= recipe.cookingTime %>" required>
     </div>
     <div class="form-group">
-      <label>Difficulty</label>
+      <label for="difficulty">Difficulty</label>
       <select name="difficulty" class="form-control" required>
-        <option value="">Select Difficulty</option>
-        <option value="Easy">Easy</option>
-        <option value="Medium">Medium</option>
-        <option value="Hard">Hard</option>
+        <option value="Easy" <%= recipe.difficulty === 'Easy' ? 'selected' : '' %>>Easy</option>
+        <option value="Medium" <%= recipe.difficulty === 'Medium' ? 'selected' : '' %>>Medium</option>
+        <option value="Hard" <%= recipe.difficulty === 'Hard' ? 'selected' : '' %>>Hard</option>
       </select>
     </div>
     <div class="form-group">
-      <label>Instructions</label>
-      <textarea name="instructions" class="form-control" required></textarea>
+      <label for="instructions">Instructions</label>
+      <textarea name="instructions" class="form-control" required><%= recipe.instructions %></textarea>
     </div>
-    <button class="btn btn-primary">Create Recipe</button>
+    <button class="btn btn-primary">Update Recipe</button>
   </form>
 </div>
+
 <%- include('../partials/footer') %>
