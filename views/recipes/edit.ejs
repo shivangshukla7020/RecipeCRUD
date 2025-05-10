@@ -1,0 +1,33 @@
+<%- include('../partials/header') %>
+<div class="container mt-3">
+  <h2>Create New Recipe</h2>
+  <form action="/recipes" method="POST" class="needs-validation" novalidate>
+    <div class="form-group">
+      <label>Dish Name</label>
+      <input type="text" name="dishName" class="form-control" required>
+    </div>
+    <div class="form-group">
+      <label>Ingredients</label>
+      <input type="text" name="ingredients" class="form-control" required>
+    </div>
+    <div class="form-group">
+      <label>Cooking Time</label>
+      <input type="number" name="cookingTime" class="form-control" required>
+    </div>
+    <div class="form-group">
+      <label>Difficulty</label>
+      <select name="difficulty" class="form-control" required>
+        <option value="">Select Difficulty</option>
+        <option value="Easy">Easy</option>
+        <option value="Medium">Medium</option>
+        <option value="Hard">Hard</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Instructions</label>
+      <textarea name="instructions" class="form-control" required></textarea>
+    </div>
+    <button class="btn btn-primary">Create Recipe</button>
+  </form>
+</div>
+<%- include('../partials/footer') %>

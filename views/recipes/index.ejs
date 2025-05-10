@@ -1,0 +1,14 @@
+<%- include('../partials/header') %>
+<div class="container mt-3">
+  <a href="/recipes/new" class="btn btn-success mb-3">New Recipe</a>
+  <% recipes.forEach(r => { %>
+    <div class="card mb-2">
+      <div class="card-body">
+        <h5 class="card-title"><%= r.dishName %></h5>
+        <p class="card-text">Difficulty: <%= r.difficulty %> | Cooking Time: <%= r.cookingTime %> min</p>
+        <a href="/recipes/<%= r._id %>" class="btn btn-primary">View</a>
+      </div>
+    </div>
+  <% }) %>
+</div>
+<%- include('../partials/footer') %>

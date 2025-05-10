@@ -1,0 +1,14 @@
+<%- include('../partials/header') %>
+<div class="container mt-3">
+  <h2><%= recipe.dishName %></h2>
+  <p><strong>Ingredients:</strong> <%= recipe.ingredients.join(', ') %></p>
+  <p><strong>Cooking Time:</strong> <%= recipe.cookingTime %> mins</p>
+  <p><strong>Difficulty:</strong> <%= recipe.difficulty %></p>
+  <p><strong>Instructions:</strong> <%= recipe.instructions %></p>
+  <a href="/recipes/<%= recipe._id %>/edit" class="btn btn-warning">Edit</a>
+  <form action="/recipes/<%= recipe._id %>?_method=DELETE" method="POST" style="display:inline;">
+    <button class="btn btn-danger">Delete</button>
+  </form>
+  <a href="/recipes" class="btn btn-secondary">Back</a>
+</div>
+<%- include('../partials/footer') %>
